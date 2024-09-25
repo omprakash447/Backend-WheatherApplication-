@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather App - Dark Theme</title>
+    <style>
+        /* Dark Theme Styles */
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #121212;
+            padding: 20px;
+            text-align: center;
+            color: #e0e0e0;
+            transition: background-color 0.5s, color 0.5s;
+            background-image: url(''); /* Background GIF will be set here */
+            background-size: cover; /* Cover entire viewport */
+            background-repeat: no-repeat; /* Prevent repeating */
+            background-position: center; /* Center the GIF */
+        }
+        form {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 30px;
+        }
+        input {
+            padding: 10px;
+            font-size: 1em;
+            border-radius: 5px;
+            border: 1px solid #333;
+            background-color: #1e1e1e;
+            color: #fff;
+            width: 250px;
+            margin-right: 10px;
+            transition: box-shadow 0.3s ease, background-color 0.3s ease;
+        }
+        input:focus {
+            outline: none;
+            box-shadow: 0 0 5px rgba(187, 134, 252, 0.5);
+        }
+        button {
+            padding: 10px 20px;
+            font-size: 1em;
+            background-color: #bb86fc;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        button:hover {
+            background-color: #9f69f1;
+        }
+        #result {
+            margin-top: 30px;
+            padding: 20px;
+            background-color: rgba(30, 30, 30, 0.8); /* Semi-transparent background for visibility */
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.6);
+            font-size: 1.2em;
+        }
+        #result h2 {
+            color: #bb86fc;
+            font-size: 1.8em;
+            margin-bottom: 10px;
+        }
+        #result p {
+            margin: 8px 0;
+            color: #ccc;
+        }
+        /* Responsive Styles */
+        @media only screen and (max-width: 600px) {
+            input {
+                width: 100%;
+                margin-right: 0;
+                margin-bottom: 10px;
+            }
+            form {
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+        {{>style}}
+    </style>
+</head>
+<body>
+    {{>header}}
+    <h1>Weather App</h1>
+    <form id="weatherForm">
+        <input type="text" id="cityInput" name="city" placeholder="Enter city name" required />
+        <button type="submit">Get Weather</button>
+    </form>
+    <div id="result"></div>
+
+    <script>
+        document.getElementById("weatherForm").addEventListener("submit", function(event) {
+            event.preventDefault();
+            const cityName = document.getElementById("cityInput").value;
+
+            fetch(`/about?name=${cityName}`)
+                .then(response => response.json())
+                .then(data => {
+                    const resultDiv = document.getElementById("result");
+                    
+                    if (!data || data.error) {
+                        resultDiv.innerHTML = `<p>${data.error || "City not found."}</p>`;
+                        document.body.style.backgroundImage = "none"; // Remove background GIF on error
+                    } else {
+                        resultDiv.innerHTML = `
+                            <h2>Weather Info for ${data.name}</h2>
+                            <p>Temperature: <strong>${data.temp}°C</strong></p>
+                            <p>Humidity: <strong>${data.humidity}%</strong></p>
+                            <p>Wind Speed: <strong>${data.wind} m/s</strong></p>
+                        `;
+
+                        const temp = data.temp;
+                        let gifSrc = "";
+                        
+                        if (temp > 30) {
+                            gifSrc = "https://i.pinimg.com/originals/e4/fc/f0/e4fcf0dca9839b140491abd35c600f08.gif"; // Hot weather GIF
+                        } else if (temp >= 15 && temp <= 30) {
+                            gifSrc = "https://www.adventurebikerider.com/wp-content/uploads/2017/10/tumblr_o27c7fByaO1tchrkco1_500.gif"; // Moderate weather GIF
+                        } else {
+                            gifSrc = "https://img2.thejournal.ie/inline/1953266/original/?width=500&version=1953266"; // Cold weather GIF
+                        }
+
+                        document.body.style.backgroundImage = `url('${gifSrc}')`; // Set the GIF as background
+                    }
+                })
+                .catch(err => {
+                    console.error("Error fetching weather data:", err);
+                    document.getElementById("result").innerHTML = "<p>Error fetching weather data.</p>";
+                    document.body.style.backgroundImage = "none"; // Remove background GIF on error
+                });
+        });
+    </script>
+</body>
+</html>

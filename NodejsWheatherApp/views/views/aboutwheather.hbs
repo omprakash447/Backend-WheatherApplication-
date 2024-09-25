@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About - Weather App</title>
+    <style>
+        /* Dark Theme Styles */
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #121212;
+            padding: 20px;
+            text-align: center;
+            color: #e0e0e0;
+            transition: background-color 0.5s, color 0.5s;
+            background-image: url(''); /* Background GIF will be set here */
+            background-size: cover; /* Cover entire viewport */
+            background-repeat: no-repeat; /* Prevent repeating */
+            background-position: center; /* Center the GIF */
+        }
+
+        a {
+            color: #bb86fc;
+            text-decoration: none;
+            font-weight: bold;
+            transition: color 0.3s;
+        }
+
+        a:hover {
+            color: #9f69f1;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #1e1e1e;
+            border-radius: 15px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.8);
+            animation: fadeIn 1s ease-in-out;
+        }
+
+        /* Button Styles */
+        button {
+            padding: 10px 20px;
+            font-size: 1em;
+            background-color: #bb86fc;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.2s;
+            margin-top: 30px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+        }
+
+        button:hover {
+            background-color: #9f69f1;
+            transform: translateY(-2px);
+        }
+
+        /* Responsive Styles */
+        @media only screen and (max-width: 600px) {
+            h1 {
+                font-size: 2em;
+            }
+            p {
+                font-size: 1em;
+            }
+        }
+
+        /* Animation Styles */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        /* Additional Styling */
+        ul {
+            list-style-type: none;
+            padding: 10px;
+            line-height: 1.8;
+            text-align: left; /* Align text to the left */
+            margin: 0 auto;
+        }
+
+        {{>style}}
+    </style>
+</head>
+<body>
+    {{>header}} <!-- Include header partial -->
+    <h1>About Our Weather App</h1>
+    <div class="container">
+        <p>Welcome to the Weather App! Our mission is to provide you with accurate and up-to-date weather information to help you plan your day.</p>
+        
+        <p>With our application, you can:</p>
+        <ul>
+            <li>Check the current weather for any city around the world.</li>
+            <li>Get detailed weather forecasts including temperature, humidity, and wind speed.</li>
+            <li>Enjoy a user-friendly interface with a beautiful dark theme.</li>
+        </ul>
+
+        <p>We use the OpenWeather API to fetch real-time weather data. Thank you for using our application!</p>
+        <button onclick="location.href='/'">Go back to Home</button>
+    </div>
+
+    {{>footer}} <!-- Include the footer if you have a footer partial -->
+</body>
+</html>

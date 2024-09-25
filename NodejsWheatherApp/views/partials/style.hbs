@@ -1,0 +1,195 @@
+* {
+margin: 0;
+padding: 0;
+box-sizing: border-box;
+}
+/* Body styling for dark theme */
+
+body {
+display: flex;
+flex-direction: column;
+min-height: 100vh;
+background-color: #121212;
+/* Dark background */
+color: #e0e0e0;
+/* Light text color */
+font-family: Arial, sans-serif;
+font-family: Arial, sans-serif;
+padding: 20px;
+text-align: center;
+transition: background-color 0.5s;
+}
+
+input, button {
+padding: 10px;
+margin: 10px;
+font-size: 16px;
+}
+#result {
+margin-top: 20px;
+font-size: 18px;
+}
+/* Sticky Navbar styling for dark theme */
+
+.navbar {
+position: sticky;
+top: 0;
+z-index: 1000;
+display: flex;
+justify-content: space-between;
+align-items: center;
+padding: 20px;
+background-color: #1f1f1f;
+/* Darker navbar */
+box-shadow: 0 4px 10px rgba(0, 0, 0, 0.7);
+/* Shadow effect */
+}
+
+.navbar .logo h1 {
+color: #e0e0e0;
+}
+
+.navbar .nav-links {
+list-style: none;
+display: flex;
+}
+
+.navbar .nav-links li {
+margin-left: 20px;
+}
+
+.navbar .nav-links a {
+color: #e0e0e0;
+text-decoration: none;
+font-weight: bold;
+}
+
+.navbar .nav-links a:hover {
+color: #ff6b6b;
+}
+/* Main container styling to take full height */
+
+.container {
+flex: 1;
+display: flex;
+flex-direction: column;
+}
+/* Hero Section styling for dark theme with GIF */
+
+.hero-section {
+background-image: url('https://i.gifer.com/6A5.gif');
+/* Cloudy GIF background */
+background-size: cover;
+background-position: center;
+height: 60vh;
+display: flex;
+justify-content: center;
+align-items: center;
+color: #e0e0e0;
+text-align: center;
+}
+
+.hero-content {
+background-color: rgba(0, 0, 0, 0.6);
+/* Transparent dark overlay */
+padding: 40px;
+border-radius: 10px;
+}
+
+.hero-content h2 {
+font-size: 3rem;
+color: #e0e0e0;
+}
+
+.hero-content p {
+font-size: 1.5rem;
+margin: 10px 0 20px;
+color: #b3b3b3;
+}
+
+.hero-button {
+background-color: #ff6b6b;
+color: #fff;
+padding: 10px 20px;
+border: none;
+border-radius: 5px;
+text-decoration: none;
+font-size: 1.2rem;
+transition: background-color 0.3s ease;
+}
+
+.hero-button:hover {
+background-color: #e74c3c;
+}
+/* About Weather section */
+
+.main-content {
+display: flex;
+flex-direction: column;
+align-items: center;
+justify-content: center;
+padding: 40px;
+text-align: center;
+background-color: #121212;
+}
+
+.about-weather {
+display: flex;
+flex-direction: column;
+align-items: center;
+justify-content: center;
+gap: 20px;
+}
+
+.about-text {
+max-width: 600px;
+color: #b3b3b3;
+/* Lighter text for readability */
+margin-bottom: 20px;
+}
+
+.weather-images {
+display: flex;
+gap: 20px;
+}
+
+.weather-img {
+width: 200px;
+height: auto;
+border-radius: 10px;
+box-shadow: 0 4px 8px rgba(0, 0, 0, 0.7);
+/* Dark shadow effect */
+}
+/* Sticky Footer styling for dark theme */
+
+footer {
+position: sticky;
+bottom: 0;
+width: 100%;
+background-color: #1f1f1f;
+color: #b3b3b3;
+text-align: center;
+padding: 15px 0;
+box-shadow: 0 -4px 10px rgba(0, 0, 0, 0.7);
+/* Shadow effect */
+}
+/* Responsive styling */
+
+@media (max-width: 768px) {
+.navbar .nav-links li {
+margin-left: 10px;
+}
+.hero-content h2 {
+font-size: 2rem;
+}
+.hero-content p {
+font-size: 1.2rem;
+}
+.weather-images {
+flex-direction: column;
+align-items: center;
+}
+.weather-img {
+width: 150px;
+}
+}
